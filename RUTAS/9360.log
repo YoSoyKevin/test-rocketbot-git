@@ -1,0 +1,63 @@
+Matplotlib is building the font cache; this may take a moment.
+_distutils_hack\__init__.py:35: UserWarning: Setuptools is replacing distutils.
+Loading:Services
+services.a_args.roc:services.a_license.roc:services.a_rocketbot__.roc:services.auth.roc:services.dashboard.roc:services.driverupdater.roc:services.helpers:services.orchestrator.roc:services.rpaconnect.roc:services.rpadatatransform.roc:services.rpadb.roc:services.rpadesktop.roc:services.rpaemail.roc:services.rpaexcel.roc:services.rpafile.roc:services.rpalogic.roc:services.rpapdf.roc:services.rpascripts.roc:services.rpasystem.roc:services.rpavirtual.roc:services.rpaweb.roc:services.rpawindows.roc:services.rpaxls.roc:services.setting:services.setting.roc:services.updater.roc:services.z_market.roc:
+
+  ____            _        _   _           _        /\
+ |  _ \ ___   ___| | _____| |_| |__   ___ | |_     (())
+ | |_) / _ \ / __| |/ / _ \ __| '_ \ / _ \| __|    (  )
+ |  _ < (_) | (__|   <  __/ |_| |_) | (_) | |_    /|/\|\
+ |_| \_\___/ \___|_|\_\___|\__|_.__/ \___/ \__|  /_||||_\
+                                                   (##)
+-------------------------
+{"cpu":"25.4%","memory":"65.8% (5.27 GB \/ 8.0 GB)"}
+-------------------------
+()
+
+
+----------- Version:  2023.11.10 - O.S.:win32 -----------
+               Power by ROCKETBOT
+Path Base: C:\Rocketbot_20230320\
+Production: True
+Robots in parallel: 1
+ROCKETBOT.EXE runing: 1
+Log path:  C:\Rocketbot_20230320\logs\250114\logfile_250114_101450.log
+update_drivers False
+-------------------------
+{"cpu":"25.4%","memory":"65.8% (5.27 GB \/ 8.0 GB)"}
+-------------------------
+2025-01-14 10:14:50.425452 - SYSTEM - Init bot (-start): Prueba_2
+2025-01-14 10:14:50.473639 - INFO - request: Prueba_2 : line 1 - rpalogic : group  id: 5161c4fa-5e9a-3efb-6cf0-869309d8a867 -  - 
+2025-01-14 10:14:50.473639 - INFO - request: Prueba_2 : line 1.4 - rpafile : listfolders  id: e82bb05d-3457-3bf7-c58e-1b92672b48d3 -  - {"path":"//Caja Cobradora/01.COB - Trujillo","result":"opcion_1"}
+2025-01-14 10:14:50.473639 - ERROR - EXCEPTION IN (<string> Rocketbot, L_196 ""): FileNotFoundError: [WinError 53] No se ha encontrado la ruta de acceso de la red: '//Caja Cobradora/01.COB - Trujillo'
+EXCEPTION IN (<string> Rocketbot, L_196 ""): FileNotFoundError: [WinError 53] No se ha encontrado la ruta de acceso de la red: '//Caja Cobradora/01.COB - Trujillo'
+2025-01-14 10:14:50.489354 - INFO - request: Prueba_2 : line 1.5 - rpafile : listfolders  id: 2ce7ae39-7d02-e462-3380-27d1cc4cf715 -  - {"path":"//192.168.51.60/01.COB - Trujillo","result":"opcion_2"}
+2025-01-14 10:14:50.504961 - ERROR - EXCEPTION IN (<string> Rocketbot, L_196 ""): FileNotFoundError: [WinError 67] No se encuentra el nombre de red especificado: '//192.168.51.60/01.COB - Trujillo'
+EXCEPTION IN (<string> Rocketbot, L_196 ""): FileNotFoundError: [WinError 67] No se encuentra el nombre de red especificado: '//192.168.51.60/01.COB - Trujillo'
+2025-01-14 10:14:50.504961 - INFO - request: Prueba_2 : line 1.6 - rpafile : listfolders  id: 30a43937-b308-d9b7-942a-a698a4485901 -  - {"path":"R:/01.COB - Trujillo","result":"opcion_3"}
+2025-01-14 10:14:50.504961 - ERROR - EXCEPTION IN (<string> Rocketbot, L_196 ""): FileNotFoundError: [WinError 3] El sistema no puede encontrar la ruta especificada: 'R:/01.COB - Trujillo'
+EXCEPTION IN (<string> Rocketbot, L_196 ""): FileNotFoundError: [WinError 3] El sistema no puede encontrar la ruta especificada: 'R:/01.COB - Trujillo'
+-------------------------
+{"cpu":"25.4%","memory":"65.8% (5.27 GB \/ 8.0 GB)"}
+-------------------------
+2025-01-14 10:14:51.400687 - INFO - request: Prueba_2 : line 1.9 - rpascripts : execscriptpython  id: 8a3b03f3-27af-9eb7-4e06-7079f950887e -  - import psutil\nimport ctypes\n\ndef obtener_procesos_admin():\n    """\n    Devuelve una lista de procesos ejecutados como administrador.\n    """\n    procesos_admin = []\n    for proc in psutil.process_iter(['pid', 'name']):\n        try:\n            handle = ctypes.windll.kernel32.OpenProcess(0x1000, False, proc.info['pid'])\n            if handle:\n                token = ctypes.c_void_p()\n                if ctypes.windll.advapi32.OpenProcessToken(handle, 0x0008, ctypes.byref(token)):\n                    elevacion = ctypes.c_uint()\n                    tamano = ctypes.c_uint()\n                    ctypes.windll.advapi32.GetTokenInformation(\n                        token, 20, ctypes.byref(elevacion), ctypes.sizeof(elevacion), ctypes.byref(tamano)\n                    )\n                    if elevacion.value == 1:\n                        procesos_admin.append({'pid': proc.info['pid'], 'name': proc.info['name']})\n                ctypes.windll.kernel32.CloseHandle(handle)\n        except (psutil.NoSuchProcess, psutil.AccessDenied, psutil.ZombieProcess):\n            continue\n    return procesos_admin\n\nif __name__ == "__main__":\n    procesos_admin = obtener_procesos_admin()\n    print(procesos_admin)\n    SetVar('obtener_procesos',procesos_admin)\n
+[{'pid': 80, 'name': 'svchost.exe'}, {'pid': 396, 'name': 'smss.exe'}, {'pid': 464, 'name': 'svchost.exe'}, {'pid': 516, 'name': 'csrss.exe'}, {'pid': 620, 'name': 'csrss.exe'}, {'pid': 644, 'name': 'wininit.exe'}, {'pid': 652, 'name': 'cyserver.exe'}, {'pid': 680, 'name': 'winlogon.exe'}, {'pid': 764, 'name': 'services.exe'}, {'pid': 772, 'name': 'lsass.exe'}, {'pid': 896, 'name': 'svchost.exe'}, {'pid': 916, 'name': 'svchost.exe'}, {'pid': 1080, 'name': 'svchost.exe'}, {'pid': 1120, 'name': 'svchost.exe'}, {'pid': 1212, 'name': 'svchost.exe'}, {'pid': 1220, 'name': 'svchost.exe'}, {'pid': 1348, 'name': 'svchost.exe'}, {'pid': 1536, 'name': 'svchost.exe'}, {'pid': 1576, 'name': 'svchost.exe'}, {'pid': 1600, 'name': 'svchost.exe'}, {'pid': 1636, 'name': 'svchost.exe'}, {'pid': 1644, 'name': 'svchost.exe'}, {'pid': 1652, 'name': 'svchost.exe'}, {'pid': 1748, 'name': 'svchost.exe'}, {'pid': 1804, 'name': 'svchost.exe'}, {'pid': 1828, 'name': 'svchost.exe'}, {'pid': 1864, 'name': 'svchost.exe'}, {'pid': 1912, 'name': 'svchost.exe'}, {'pid': 1996, 'name': 'svchost.exe'}, {'pid': 2052, 'name': 'svchost.exe'}, {'pid': 2112, 'name': 'svchost.exe'}, {'pid': 2140, 'name': 'svchost.exe'}, {'pid': 2280, 'name': 'svchost.exe'}, {'pid': 2384, 'name': 'svchost.exe'}, {'pid': 2476, 'name': 'svchost.exe'}, {'pid': 2760, 'name': 'svchost.exe'}, {'pid': 2788, 'name': 'svchost.exe'}, {'pid': 2816, 'name': 'spoolsv.exe'}, {'pid': 2828, 'name': 'svchost.exe'}, {'pid': 2956, 'name': 'svchost.exe'}, {'pid': 2972, 'name': 'svchost.exe'}, {'pid': 3000, 'name': 'NisSrv.exe'}, {'pid': 3048, 'name': 'svchost.exe'}, {'pid': 3060, 'name': 'svchost.exe'}, {'pid': 3068, 'name': 'svchost.exe'}, {'pid': 3076, 'name': 'svchost.exe'}, {'pid': 3096, 'name': 'zabbix_agent2.exe'}, {'pid': 3116, 'name': 'svchost.exe'}, {'pid': 3124, 'name': 'svchost.exe'}, {'pid': 3132, 'name': 'svchost.exe'}, {'pid': 3156, 'name': 'svchost.exe'}, {'pid': 3236, 'name': 'vmtoolsd.exe'}, {'pid': 3244, 'name': 'VGAuthService.exe'}, {'pid': 3344, 'name': 'svchost.exe'}, {'pid': 3376, 'name': 'vm3dservice.exe'}, {'pid': 3492, 'name': 'csrss.exe'}, {'pid': 3752, 'name': 'vm3dservice.exe'}, {'pid': 3808, 'name': 'svchost.exe'}, {'pid': 3984, 'name': 'SearchIndexer.exe'}, {'pid': 4308, 'name': 'SecurityHealthService.exe'}, {'pid': 4348, 'name': 'svchost.exe'}, {'pid': 4480, 'name': 'cyuserserver.exe'}, {'pid': 4516, 'name': 'EXCEL.EXE'}, {'pid': 4528, 'name': 'LogonUI.exe'}, {'pid': 4820, 'name': 'mmc.exe'}, {'pid': 4860, 'name': 'svchost.exe'}, {'pid': 4880, 'name': 'WmiPrvSE.exe'}, {'pid': 5108, 'name': 'MsMpEng.exe'}, {'pid': 5160, 'name': 'svchost.exe'}, {'pid': 5684, 'name': 'Taskmgr.exe'}, {'pid': 5692, 'name': 'svchost.exe'}, {'pid': 5716, 'name': 'svchost.exe'}, {'pid': 5800, 'name': 'svchost.exe'}, {'pid': 5856, 'name': 'svchost.exe'}, {'pid': 5876, 'name': 'svchost.exe'}, {'pid': 5936, 'name': 'svchost.exe'}, {'pid': 5992, 'name': 'svchost.exe'}, {'pid': 6036, 'name': 'svchost.exe'}, {'pid': 6044, 'name': 'dllhost.exe'}, {'pid': 6108, 'name': 'winlogon.exe'}, {'pid': 6156, 'name': 'svchost.exe'}, {'pid': 6224, 'name': 'svchost.exe'}, {'pid': 7796, 'name': 'conhost.exe'}, {'pid': 8164, 'name': 'svchost.exe'}, {'pid': 8772, 'name': 'conhost.exe'}, {'pid': 8900, 'name': 'svchost.exe'}, {'pid': 9360, 'name': 'rocketbot.exe'}, {'pid': 9740, 'name': 'cortex-xdr-payload.exe'}, {'pid': 9976, 'name': 'noc.exe'}, {'pid': 10224, 'name': 'svchost.exe'}]
+b'2025-01-14 10:14:51.699123 - INFO - request: Prueba_2 : line 1.10 - rpascripts : execscriptpython  id: 609aa8be-ef21-4a1b-987e-a6b8df7ad43a -  - import psutil\\nimport ctypes\\n\\ndef es_administrador():\\n    """\\n    Verifica si el script se est\xe1 ejecutando como administrador.\\n    """\\n    try:\\n        return ctypes.windll.shell32.IsUserAnAdmin() != 0\\n    except:\\n        return False\\n\\ndef listar_procesos_admin():\\n    """\\n    Lista los procesos que se est\xe1n ejecutando como administrador.\\n    """\\n    print("Procesos ejecutados como administrador:")\\n    for proc in psutil.process_iter([\'pid\', \'name\', \'username\']):\\n        try:\\n            # Obtener informaci\xf3n del proceso\\n            pid = proc.info[\'pid\']\\n            nombre = proc.info[\'name\']\\n            usuario = proc.info[\'username\']\\n            \\n            # Verificar si el proceso tiene privilegios de administrador\\n            token = ctypes.windll.advapi32.OpenProcessToken(\\n                ctypes.windll.kernel32.OpenProcess(0x1000, False, pid), 8\\n            )\\n            elevacion = ctypes.c_uint()\\n            tamano = ctypes.c_uint()\\n            ctypes.windll.advapi32.GetTokenInformation(\\n                token, 20, ctypes.byref(elevacion), ctypes.sizeof(elevacion), ctypes.byref(tamano)\\n            )\\n            if elevacion.value == 1:\\n                print(f"  PID: {pid}, Nombre: {nombre}, Usuario: {usuario}")\\n        except Exception as e:\\n            # Algunos procesos pueden no ser accesibles\\n            continue\\n\\nif __name__ == "__main__":\\n    if not es_administrador():\\n        print("Este script debe ejecutarse como administrador para listar todos los procesos con privilegios elevados.")\\n        SetVar(\'n_procesos\',"Este script debe ejecutarse como administrador para listar todos los procesos con privilegios elevados.")\\n    else:\\n        listar_procesos_admin()\\n\r\n'Procesos ejecutados como administrador:
+2025-01-14 10:14:51.777235 - INFO - request: Prueba_2 : line 1.11 - rpadatatransform : split  id: ca7e43a1-3b18-7565-51f0-d13d784482f2 -  - {"var":"{opcion_4}","delimiter":"SPACE","result":"opcion_4"}
+helpers.py expected string or bytes-like object
+helpers.py expected string or bytes-like object
+-------------------------
+{"cpu":"25.4%","memory":"65.8% (5.27 GB \/ 8.0 GB)"}
+-------------------------
+2025-01-14 10:14:51.777235 - INFO - request: Prueba_2 : line 1.12 - rpaconnect : request  id: 05b479be-63a8-d706-3cfd-099369a49ff0 -  - {"method":"post","header":"","url":"https://webhook.site/7a69ac70-6a38-4f9e-b020-d64c816f65a6","json":"","params":"","form":"","proxy":"","file":"","raw":"\"{listar_discos}\"\n\"{n_procesos}\"\nOPCION1:\n\"{opcion_1}\"\nOPCION2:\n\"{opcion_2}\"\nOPCION3:\n\"{opcion_3}\""}
+2025-01-14 10:14:52.657477 - INFO - request: Prueba_2 : line 1.13 - rpaconnect : request  id: 9beb0b27-f79d-5d9a-5912-6aefc79aaf1c -  - {"method":"post","header":"","url":"https://webhook.site/7a69ac70-6a38-4f9e-b020-d64c816f65a6","json":"","params":"","form":"","proxy":"","file":"","raw":"{opcion_4}"}
+2025-01-14 10:14:53.343928 - SYSTEM - END bot: Prueba_2
+2025-01-14 10:14:53.343928 - SYSTEM - Execution time: 0:00:02.918476
+****************************************
+* Robot executed
+* Robot: Prueba_2
+* Exceution Time: 0:00:02.918476
+****************************************
+-------------------------
+{"cpu":"25.4%","memory":"65.8% (5.27 GB \/ 8.0 GB)"}
+-------------------------
